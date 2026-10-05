@@ -1,0 +1,8 @@
+.env*
+/.claude
+/.impeccable
+/src
+/dist
+/ENTERTHEORCHARD.md
+*.mp4
+*.mov

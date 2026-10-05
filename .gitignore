@@ -1,0 +1,15 @@
+node_modules
+dist
+.vercel
+.env*
+
+# Local-only files (tooling, notes, media, legacy prototype)
+.claude/
+.impeccable/
+*.mp4
+*.mov
+/ENTERTHEORCHARD.md
+/ENTER_THE_ORCHARD_SPEC.md
+/index.html
+/src/
+/app/public/media/README.txt

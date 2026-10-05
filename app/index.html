@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Enter the Orchard</title>
+    <meta name="description" content="Zero to your first private Zcash transaction. A short, playable walk through wallet setup, getting ZEC, shielding and sending." />
+    <meta name="theme-color" content="#1F3D2B" />
+    <link rel="canonical" href="https://enter-the-orchard.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://enter-the-orchard.vercel.app/" />
+    <meta property="og:title" content="Enter the Orchard" />
+    <meta property="og:description" content="Zero to your first private Zcash transaction. Plant a tree, hide it in the Orchard, and leave the Watcher with nothing." />
+    <meta property="og:image" content="https://enter-the-orchard.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Enter the Orchard" />
+    <meta name="twitter:description" content="Zero to your first private Zcash transaction." />
+    <meta name="twitter:image" content="https://enter-the-orchard.vercel.app/og.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app is-pre" id="app">
+      <header class="topbar">
+        <button class="icon-btn" id="back-btn" aria-label="Back" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+        <ol class="progress" id="progress" aria-label="Progress"></ol>
+        <span class="demo-chip" id="demo-chip" hidden>Demo</span>
+        <div class="topbar-end">
+          <button class="text-btn" id="guide-btn"><span class="wide-only">Field </span>Guide</button>
+          <button class="icon-btn" id="sound-btn" aria-label="Sound" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path class="spk" d="M4 9h4l5-4v14l-5-4H4z" /><path class="wave" d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12" /><path class="mute" d="M16 9l5 6M21 9l-5 6" /></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="stage" id="stage">
+        <div class="world" id="world" aria-hidden="true">
+          <video class="hero-video" id="hero-video" muted loop playsinline preload="none" poster="/media/hero.jpg"></video>
+        </div>
+        <div class="film" aria-hidden="true"></div>
+
+        <section class="hero" id="hero">
+          <p class="hero-kicker">A Zcash field trip</p>
+          <h1 class="hero-title"><span class="ln"><span>The</span></span><span class="ln"><span>Orchard</span></span></h1>
+          <p class="hero-line">Zero to your first private Zcash transaction.</p>
+          <button class="btn btn-primary btn-big" id="enter-btn">Enter the Orchard</button>
+        </section>
+
+        <section class="panel" id="panel" aria-live="polite" hidden></section>
+      </main>
+
+      <aside class="watcher" id="watcher" aria-label="The Watcher">
+        <button class="watcher-bar" id="watcher-bar" aria-expanded="true">
+          <span class="watcher-eye" aria-hidden="true"></span>
+          <span class="watcher-name">THE WATCHER</span>
+          <span class="watcher-peek" id="watcher-peek"></span>
+          <span class="watcher-chev" aria-hidden="true"></span>
+        </button>
+        <div class="watcher-log" id="watcher-log" role="log" aria-live="polite"></div>
+      </aside>
+    </div>
+
+    <dialog class="guide" id="guide" aria-labelledby="guide-title">
+      <div class="guide-inner">
+        <button class="icon-btn guide-close" id="guide-close" aria-label="Close Field Guide">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+        <p class="eyebrow">The Field Guide</p>
+        <h2 id="guide-title">Do it for real</h2>
+        <p class="guide-lede">The whole thing in five steps, no game. Every real action happens in your own Zodl app.</p>
+        <ol class="guide-steps">
+          <li>
+            <h3>Install Zodl and write your 24 words on paper.</h3>
+            <p>Zodl (formerly Zashi) is a free Zcash wallet for iPhone and Android. Create a new wallet and copy the 24-word recovery phrase onto paper. Never screenshot it. Never share it. Nobody legit will ever ask for it.</p>
+            <p><a data-link="zodl" href="https://zodl.com" target="_blank" rel="noopener">Get Zodl</a></p>
+          </li>
+          <li>
+            <h3>Get ZEC.</h3>
+            <p>Swap inside Zodl (it lands shielded), or withdraw from an exchange to your transparent address. Exchange deposits are public. Some exchanges, like Gemini, can send straight to your shielded address.</p>
+            <p><a href="https://support.zodl.com/article/26-swapping-into-zec" target="_blank" rel="noopener">Swapping into ZEC</a> · <a href="https://support.zodl.com/article/25-depositing-from-exchanges" target="_blank" rel="noopener">Depositing from exchanges</a></p>
+          </li>
+          <li>
+            <h3>Shield.</h3>
+            <p>When Zodl shows a transparent balance, tap Shield. Zodl makes you shield before you spend, so your spending stays private.</p>
+          </li>
+          <li>
+            <h3>Send and receive.</h3>
+            <p>To send, paste a friend's address (it starts with u1), add a memo, and send. To receive, share your own u1 address from the Receive screen.</p>
+          </li>
+          <li>
+            <h3>Unshield only when you need to.</h3>
+            <p>Sending to an exchange or another transparent address makes that leg public: where it went, and how much. Avoid sending out the exact amount you just shielded.</p>
+          </li>
+        </ol>
+        <p class="guide-foot">This site never asks for your 24 words, never stores your address, and has no tracking. It only teaches.</p>
+      </div>
+    </dialog>
+
+    <svg class="defs" aria-hidden="true" width="0" height="0">
+      <defs>
+        <symbol id="tree" viewBox="-50 -122 100 126" overflow="visible">
+          <ellipse cx="0" cy="2" rx="26" ry="5" fill="#000" opacity=".18" />
+          <path d="M-4.5 2 L-3 -46 Q0 -50 3 -46 L4.5 2 Z" fill="#5B3B24" />
+          <path d="M-2 -38 L-14 -58 M2 -42 L13 -60" stroke="#5B3B24" stroke-width="3" stroke-linecap="round" />
+          <circle cx="-15" cy="-66" r="22" fill="#2E5537" />
+          <circle cx="16" cy="-64" r="21" fill="#2E5537" />
+          <circle cx="0" cy="-82" r="27" fill="#3E6B45" />
+          <circle cx="-12" cy="-72" r="20" fill="#3E6B45" />
+          <circle cx="13" cy="-74" r="19" fill="#44754B" />
+          <circle cx="-8" cy="-92" r="12" fill="#55894F" opacity=".7" />
+          <circle cx="-16" cy="-62" r="3.6" fill="#E3A33B" />
+          <circle cx="12" cy="-84" r="3.6" fill="#E3A33B" />
+          <circle cx="20" cy="-62" r="3.6" fill="#E3A33B" />
+          <circle cx="-2" cy="-70" r="3.6" fill="#E3A33B" />
+        </symbol>
+        <symbol id="fruit-icon" viewBox="0 0 24 24">
+          <path d="M12 7.5c-4.4 0-7 3-7 6.8S7.6 21 12 21s7-2.9 7-6.7-2.6-6.8-7-6.8z" style="fill:var(--fruit-fill);stroke:var(--fruit-stroke);stroke-width:1.6" />
+          <path d="M12 7.5c0-2 .6-3.6 2-4.6" style="fill:none;stroke:var(--fruit-stroke);stroke-width:1.6;stroke-linecap:round" />
+          <path d="M12.8 5.4c1.8-1.6 4.4-1.6 5.6-.6-1.2 1.6-3.6 2-5.6.6z" style="fill:var(--fruit-leaf);stroke:var(--fruit-stroke);stroke-width:1.2" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <noscript>
+      <p style="padding:24px;font-family:sans-serif">Enter the Orchard needs JavaScript for the game. The Field Guide above has every real step.</p>
+    </noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
